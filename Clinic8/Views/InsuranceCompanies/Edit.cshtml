@@ -1,0 +1,61 @@
+﻿@model Clinic8.Models.InsuranceCompany
+
+@{
+    ViewData["Title"] = "Edit";
+
+}
+
+
+<h2>InsuranceCompany</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ins_name" class="control-label"></label>
+                <input asp-for="ins_name" class="form-control" />
+                <span asp-validation-for="ins_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ins_email" class="form-control" />
+                <span asp-validation-for="ins_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_phone" class="control-label"></label>
+                <input asp-for="ins_phone" class="form-control" />
+                <span asp-validation-for="ins_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ins_username" class="form-control" />
+                <span asp-validation-for="ins_username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ins_password" class="form-control" />
+                <span asp-validation-for="ins_password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_address" class="control-label"></label>
+                <input asp-for="ins_address" class="form-control" />
+                <span asp-validation-for="ins_address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_fax" class="control-label"></label>
+                <input asp-for="ins_fax" class="form-control" />
+                <span asp-validation-for="ins_fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

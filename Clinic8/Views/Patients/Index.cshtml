@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Clinic8.Models.Patient>
+
+
+
+    
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_middlename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_lastname)
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.pat_geneder)*@Gender
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_username)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.pat_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_middlename)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_geneder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_username)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_address)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+             
+            </tr>
+        }
+    </tbody>
+</table>

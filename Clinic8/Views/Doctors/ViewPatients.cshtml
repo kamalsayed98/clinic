@@ -1,0 +1,181 @@
+﻿@model IEnumerable<Clinic8.Models.Patient>
+
+@{
+    ViewData["Title"] = "ViewPatients";
+}
+<link rel="stylesheet" href="~/css/StyleSheet.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_geneder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_birthday)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pat_blood_type)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_geneder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_birthday)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pat_blood_type)
+                </td>
+                <td>
+                    <a href="#" onclick="showMessage('@item.pat_firstname', '@item.pat_middlename',
+                                                    '@item.pat_lastname', '@item.pat_geneder',
+                                                    '@item.pat_username', '@item.pat_phone',
+                                                    '@item.pat_birthday', '@item.pat_email',
+                                                    '@item.pat_address', '@item.pat_blood_type')">
+                        View Profile
+                    </a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<!--------------------------------------------->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+
+            <div class="modal fade" id="profile">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">profile</h4>
+                            <button type="button" class="close" data-dismiss="modal">
+                                ×
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">
+                                    fistname
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="firstname">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    middlename
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="middlename">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    lastname
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="lastname">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    gender
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="gender">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    username
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="username">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    phone
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="phone">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    birthday
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="birthday">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    email
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="email">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    address
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="address">
+                                </dd>
+                                <dt class="col-sm-3">
+                                    blood type
+                                </dt>
+                                <dd class="col-sm-9">
+                                    <p id="bloodtype">
+                                </dd>
+                                
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+
+</script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    function showMessage(firstname,middlename, lastname,gender,username,phone,birthday,email,address,bloodtype) {
+
+        $("#profile").modal('show');
+        document.getElementById("firstname").innerHTML = firstname;
+        document.getElementById("middlename").innerHTML = middlename;
+        document.getElementById("lastname").innerHTML = lastname;
+        document.getElementById("gender").innerHTML = gender;
+        document.getElementById("username").innerHTML = username;
+        document.getElementById("phone").innerHTML = phone;
+        document.getElementById("birthday").innerHTML = birthday;
+        document.getElementById("email").innerHTML = email;
+        document.getElementById("address").innerHTML = address;
+        document.getElementById("bloodtype").innerHTML = bloodtype;
+    }
+</script>
+

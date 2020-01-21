@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Clinic8.Models.Dates>
+
+@using Microsoft.EntityFrameworkCore
+@using Clinic8.Data
+
+@inject ApplicationDbContext _context
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                patient
+            </th>
+            <th>
+                doctor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        var patient = _context.Patient.Where(e => e.Id == item.pat_rel).Single();
+
+                        var x = patient.pat_firstname + " " + patient.pat_middlename + " " + patient.pat_lastname;
+                    }
+                    @x
+                </td>
+                <td>
+                    @{
+                        var doctor = _context.Doctor.Where(e => e.Id == item.doc_rel).Single();
+
+                        var y = doctor.dr_firstname + " " + doctor.dr_middlename + " " + doctor.dr_lastname;
+                    }
+                    @y
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_date)
+                </td>
+                <td>
+
+                    <a asp-action="Delete" asp-route-id="@item.date_id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.date_id">edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

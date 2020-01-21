@@ -1,0 +1,84 @@
+﻿@model Clinic8.Models.Consultation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Consultation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ins_pat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ins_pat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_d)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_d)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_symptoms)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_symptoms)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_diagnosis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_diagnosis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_temp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_temp)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_blood_presure)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_blood_presure)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_cost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.cons_treatment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.cons_treatment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ins_ref)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ins_ref)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.cons_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Clinic8.Models.Reminder_admin>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.reminder_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reminder_content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reminder_priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reminder_title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reminder_time)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reminder_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reminder_content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reminder_priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reminder_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reminder_time)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.reminder_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.reminder_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.reminder_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,80 @@
+﻿@model Clinic8.Models.Consultation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<h4>Consultation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="cons_id" />
+            <div class="form-group">
+                @ViewData["pat"]
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_title" class="control-label"></label>
+                <input asp-for="cons_title" class="form-control" />
+                <span asp-validation-for="cons_title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_type" class="control-label"></label>
+                <input asp-for="cons_type" class="form-control" />
+                <span asp-validation-for="cons_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_d" class="control-label"></label>
+                <input asp-for="cons_d" class="form-control" />
+                <span asp-validation-for="cons_d" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_symptoms" class="control-label"></label>
+                <input asp-for="cons_symptoms" class="form-control" />
+                <span asp-validation-for="cons_symptoms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_diagnosis" class="control-label"></label>
+                <input asp-for="cons_diagnosis" class="form-control" />
+                <span asp-validation-for="cons_diagnosis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_temp" class="control-label"></label>
+                <input asp-for="cons_temp" class="form-control" />
+                <span asp-validation-for="cons_temp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_blood_presure" class="control-label"></label>
+                <input asp-for="cons_blood_presure" class="form-control" />
+                <span asp-validation-for="cons_blood_presure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_cost" class="control-label"></label>
+                <input asp-for="cons_cost" class="form-control" />
+                <span asp-validation-for="cons_cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cons_treatment" class="control-label"></label>
+                <input asp-for="cons_treatment" class="form-control" />
+                <span asp-validation-for="cons_treatment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="ins_ref" class="form-control" />
+                <span asp-validation-for="ins_ref" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Doctors" asp-action="ViewConsultation" >Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,86 @@
+﻿@model Clinic8.Models.Doctor
+
+@{
+    ViewData["Title"] = "Details";
+
+}
+
+
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_firstname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_firstname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_middlename)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_middlename)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_lastname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_lastname)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.dr_geneder)*@Gender
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_geneder)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_username)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_username)
+        </dd>
+     
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_speciality)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_speciality)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_time)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_time)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dr_about)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dr_about)
+        </dd>
+    
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Clinic8.Models.Doctor
+@{
+    ViewData["Title"] = "SearchDoctor";
+}
+
+
+<form asp-controller="Patient" asp-action="SearchDoctor">
+    <div class="form-group" >
+
+        <input type="text" name="s" id="dr_name" style="border-radius:5px;" />
+        <input type="submit" value="Search" style="border-radius:5px;" class="btn btn-info" />
+    </div>
+</form>
+@if (ViewData["searching"] != null && (bool)ViewData["searching"] == false)
+{
+    <div class="form-group">
+        <span class="control-label"> <strong> full Name :</strong> @Model.dr_firstname @Model.dr_middlename @Model.dr_lastname</span>
+    </div>
+    <div class="form-group">
+        <span class="control-label"><strong>Phone :</strong>  @Model.dr_phone</span>
+    </div>
+    <div class="form-group">
+        <span class="control-label"><strong>email :</strong> @Model.dr_email </span>
+    </div>
+    <div class="form-group">
+        <span class="control-label"><strong>Specility :</strong> @Model.dr_speciality</span>
+    </div>
+    <div class="form-group">
+        <span class="control-label"><strong>Available Time :</strong> @Model.dr_time</span>
+    </div>
+    <div class="form-group">
+        <sapn class="control-label"><strong>Address :</strong> @Model.dr_address</sapn>
+    </div>
+
+}
+

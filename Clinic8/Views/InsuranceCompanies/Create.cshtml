@@ -1,0 +1,68 @@
+﻿@model Clinic8.Models.InsuranceCompany
+
+@{
+    ViewData["Title"] = "Create";
+  
+}
+
+<h1>Create</h1>
+
+<h4>InsuranceCompany</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <select asp-for="Id" class ="form-control" asp-items="ViewBag.Id"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_name" class="control-label"></label>
+                <input asp-for="ins_name" class="form-control" />
+                <span asp-validation-for="ins_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_email" class="control-label"></label>
+                <input asp-for="ins_email" class="form-control" />
+                <span asp-validation-for="ins_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_phone" class="control-label"></label>
+                <input asp-for="ins_phone" class="form-control" />
+                <span asp-validation-for="ins_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_username" class="control-label"></label>
+                <input asp-for="ins_username" class="form-control" />
+                <span asp-validation-for="ins_username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_password" class="control-label"></label>
+                <input asp-for="ins_password" class="form-control" />
+                <span asp-validation-for="ins_password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_address" class="control-label"></label>
+                <input asp-for="ins_address" class="form-control" />
+                <span asp-validation-for="ins_address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ins_fax" class="control-label"></label>
+                <input asp-for="ins_fax" class="form-control" />
+                <span asp-validation-for="ins_fax" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

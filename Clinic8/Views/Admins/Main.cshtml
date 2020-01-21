@@ -1,0 +1,183 @@
+﻿@model Clinic8.Models.adminMessages_Reminder
+@{
+    ViewData["Title"] = "Main";
+}
+<link rel="stylesheet" href="~/css/StyleSheet.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="form-group">
+    <label class="control-label" style="text-transform:uppercase;padding-left:180px;">Messages</label>
+</div>
+<div class="left">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    name
+                </th>
+                <th>
+                    email
+                </th>
+                <th>
+                    subject
+                </th>
+                <th>
+                    message
+                </th>
+                <th>
+                    date
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Messages)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.m_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.m_email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.m_subject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.m_message)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.m_date)
+                    </td>
+                    <td>
+
+                        <a href="#" onclick="showMessage('@item.m_name', '@item.m_email',  '@item.m_subject',  '@item.m_message', '@item.m_date' )">
+                            Details
+                        </a>
+                        <a asp-controller="Messages" asp-action="Delete" asp-route-id="@item.m_id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<div class="topright">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    date
+                </th>
+                <th>
+                    priority
+                </th>
+                <th>
+                    title
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.reminder_Admins)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reminder_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reminder_priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reminder_title)
+                    </td>
+                    <td>
+                        <a asp-controller="Reminder_admin" asp-action="Details" asp-route-id="@item.reminder_id">Details</a>
+                        <a asp-controller="Reminder_admin" asp-action="Delete" asp-route-id="@item.reminder_id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="bottomright">
+    <div class="centered">
+        <a asp-controller="reminder_Admin" asp-action="Create">Create New Record</a>
+    </div>
+</div>
+<!--------------------------------------------->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+
+            <div class="modal fade" id="message">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Message</h4>
+                            <button type="button" class="close" data-dismiss="modal">
+                                ×
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <dl class="row">
+                                <dt class="col-sm-2">
+                                    From
+                                </dt>
+                                <dd class="col-sm-10">
+                                    <p id="name">
+                                </dd>
+                                <dt class="col-sm-2">
+                                    Email
+                                </dt>
+                                <dd class="col-sm-10">
+                                    <p id="email"></p>
+                                </dd>
+                                <dt class="col-sm-2">
+                                    Subject
+                                </dt>
+                                <dd class="col-sm-10">
+                                    <p id="subject"></p>
+                                </dd>
+                                <dt class="col-sm-2">
+                                    Message
+                                </dt>
+                                <dd class="col-sm-10">
+                                    <p id="message1"></p>
+                                </dd>
+                                <dt class="col-sm-2">
+                                    Date
+                                </dt>
+                                <dd class="col-sm-10">
+                                    <p id="date"></p>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+
+</script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    function showMessage(name, email, subject, message, date) {
+
+        $("#message").modal('show');
+        document.getElementById("name").innerHTML = name;
+        document.getElementById("email").innerHTML = email;
+        document.getElementById("subject").innerHTML = subject;
+        document.getElementById("message1").innerHTML = message;
+        document.getElementById("date").innerHTML = date;
+    }
+</script>
+

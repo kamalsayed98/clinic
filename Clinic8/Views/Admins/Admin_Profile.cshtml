@@ -1,0 +1,47 @@
+﻿@model Clinic8.Models.Admin
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Admin_Profile";
+}
+
+
+
+
+<h1>Admin Profile</h1>
+
+<div class="window-wrapper">
+    <div class="window" style="width:700px;">
+
+        <div class="body">
+            <br />
+            <div class="row">
+
+                <div class="col-lg-6" style="font-size:25px;font-family:Calibri;padding-left:40px;padding-top:10px;">
+                    <div> <span class="title">Username:</span> @Model.admin_username</div>
+                    <div> <span class="title">Email: </span> @Model.admin_email</div>
+                    <div> <span class="title">First Name:</span>  @Model.admin_fname</div>
+                    <div> <span class="title">Middle Name: </span>   @Model.admin_mname</div>
+                    <div> <span class="title">Last Name:</span>  @Model.admin_lname</div>
+
+                    <div> <span class="title">Phone:</span>  @Model.admin_phone</div>
+                </div>
+
+                <br />
+                <br />
+
+            </div>
+            <form asp-action="Edit" method="get">
+                <input type="submit" value="Edit" class="btn btn-success float-right" />
+            </form>
+        </div>
+        <div class="footer">
+
+
+        </div>
+
+    </div>
+</div>
+
+

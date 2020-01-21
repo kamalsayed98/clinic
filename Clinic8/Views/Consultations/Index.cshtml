@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Clinic8.Models.Consultation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (User.IsInRole("Doctor"))
+{
+    <h3>Create New Consultation</h3>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ins_pat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_d)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_symptoms)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_diagnosis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_temp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_blood_presure)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cons_treatment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ins_ref)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ins_pat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_d)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_symptoms)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_diagnosis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_temp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_blood_presure)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cons_treatment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ins_ref)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.cons_id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.cons_id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.cons_id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

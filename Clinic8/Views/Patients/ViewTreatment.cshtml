@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Clinic8.Models.Consultation>
+
+@{
+    ViewData["Title"] = "ViewTreatment";
+    var id = ViewData["id"] ;
+}
+
+<h1>ViewTreatment</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cons_cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cons_treatment)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.ins_pat == id.ToString())
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cons_cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cons_treatment)
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

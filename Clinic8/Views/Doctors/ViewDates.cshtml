@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Clinic8.Models.Dates>
+
+@using Microsoft.EntityFrameworkCore
+@using Clinic8.Data
+@using Microsoft.AspNetCore.Identity;
+
+@inject ApplicationDbContext _context
+@inject UserManager<IdentityUser> _userManger
+
+@{
+    ViewData["Title"] = "ViewDates";
+    var id = ViewData["id"];
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Date Of Appointment
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            @if (item.doc_rel == id.ToString())
+            {
+                <tr>
+                    <td>
+                        @{
+                            var patient = _context.Patient.Where(e => e.Id == item.pat_rel).Single();
+
+                            var x = patient.pat_firstname + " " + patient.pat_middlename + " " + patient.pat_lastname;
+                        }
+                        @x
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date_date)
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.date_id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

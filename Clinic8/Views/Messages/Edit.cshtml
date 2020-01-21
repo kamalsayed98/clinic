@@ -1,0 +1,51 @@
+﻿@model Clinic8.Models.Messages
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Messages</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="m_id" />
+            <div class="form-group">
+                <label asp-for="m_name" class="control-label"></label>
+                <input asp-for="m_name" class="form-control" />
+                <span asp-validation-for="m_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="m_email" class="control-label"></label>
+                <input asp-for="m_email" class="form-control" />
+                <span asp-validation-for="m_email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="m_subject" class="control-label"></label>
+                <input asp-for="m_subject" class="form-control" />
+                <span asp-validation-for="m_subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="m_message" class="control-label"></label>
+                <input asp-for="m_message" class="form-control" />
+                <span asp-validation-for="m_message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="m_date" class="control-label"></label>
+                <input asp-for="m_date" class="form-control" />
+                <span asp-validation-for="m_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

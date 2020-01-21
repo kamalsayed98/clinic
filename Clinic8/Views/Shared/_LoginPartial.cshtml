@@ -1,0 +1,79 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Main" asp-controller="Admins">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Add Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="Doctors">Doctors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="Assistants">Assistants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="InsuranceCompanies">Insurance Company</a>
+                </li>
+
+            }
+            @if (User.IsInRole("Assistant"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="Patients">Patients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Add_Patiets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Index" asp-controller="Dates">Dates</a>
+                </li>
+            }
+            @if (User.IsInRole("Doctor"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Create" asp-controller="Reports">Add_Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="ViewDates" asp-controller="Doctors">Dates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="ViewConsultation" asp-controller="Doctors">Consultaion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="ViewPatients" asp-controller="Doctors">Patients</a>
+                </li>
+            }
+            @if (User.IsInRole("Patient"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="ViewDates" asp-controller="Patients">Dates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="ViewTreatment" asp-controller="Patients">Treatment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="SearchDoctor" asp-controller="Patients">Search_Doctor</a>
+                </li>
+            }
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </li>
+        }
+    </ul>

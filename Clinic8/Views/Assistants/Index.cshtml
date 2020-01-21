@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Clinic8.Models.Assistant>
+@using Microsoft.EntityFrameworkCore
+@using Clinic8.Data
+@using Microsoft.AspNetCore.Identity;
+
+@inject ApplicationDbContext _context
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.as_username)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.as_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.as_email)
+            </th>
+            <th>
+                Doctor
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.as_fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.as_mname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.as_lname)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.as_username)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.as_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.as_email)
+                </td>
+                <td>
+                    @{
+                        var doctor = _context.Doctor.Where(e => e.Id == item.ins_doc).Single();
+
+                        var x = doctor.dr_firstname + " " +  doctor.dr_lastname;
+                    }
+                    @x
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.as_fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.as_mname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.as_lname)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

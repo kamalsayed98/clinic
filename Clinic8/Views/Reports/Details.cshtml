@@ -1,0 +1,54 @@
+﻿@model Clinic8.Models.Reports
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reports</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rep_pat_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rep_pat_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ins_ref)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ins_ref)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rep_dr_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rep_dr_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rep_cons_title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rep_cons_title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rep_cons_cost)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rep_cons_cost)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.rep_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.rep_date)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.rep_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

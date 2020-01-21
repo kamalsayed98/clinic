@@ -1,0 +1,63 @@
+﻿@model Clinic8.Models.Assistant
+
+@{
+    ViewData["Title"] = "Details";
+
+}
+
+
+<div>
+    <h4>Assistant</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.as_username)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.as_username)
+        </dd>
+       
+      
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.as_phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.as_phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.as_email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.as_email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ins_doc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ins_doc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.as_fname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.as_fname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.as_mname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.as_mname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.as_lname)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.as_lname)
+        </dd>
+     
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

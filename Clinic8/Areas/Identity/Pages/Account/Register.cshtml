@@ -1,0 +1,309 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Input.Username">Username</label>
+            <input asp-for="Input.Username" class="form-control" />
+            <span asp-validation-for="Input.Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Password"></label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.ConfirmPassword"></label>
+            <input asp-for="Input.ConfirmPassword" class="form-control" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        @if (!User.IsInRole("Assistant"))
+        {
+            @*SELECT*@
+            <select asp-for="Input.Role" class="custom-select" id="getFname" onchange="admSelectCheck(this);">
+                <option id="selectroles" value="0">Select Role</option>
+                <option id="doctorrole" value="Doctor">Doctor</option>
+                <option id="assistantrole" value="Assistant">Assistant</option>
+               
+                <option id="insurancecompanyrole" value="InsuranceCompany">Insurance Company</option>
+            </select>
+            @*ADMIN*@
+            <div id="admin" style="display:none;">
+                <div class="form-group">
+                    <label asp-for="Input.admin_fname">first name</label>
+                    <input asp-for="Input.admin_fname" class="form-control" />
+                    <span asp-validation-for="Input.admin_fname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.admin_mname">middle name</label>
+                    <input asp-for="Input.admin_mname" class="form-control" />
+                    <span asp-validation-for="Input.admin_mname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.admin_lname">last name</label>
+                    <input asp-for="Input.admin_lname" class="form-control" />
+                    <span asp-validation-for="Input.admin_lname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.admin_phone">phone</label>
+                    <input asp-for="Input.admin_phone" class="form-control" />
+                    <span asp-validation-for="Input.admin_phone" class="text-danger"></span>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+
+            </div>
+            @*DOCTOR*@
+            <div id="doctor" style="display:none;">
+                <div class="form-group">
+                    <label asp-for="Input.dr_firstname">First Name</label>
+                    <input asp-for="Input.dr_firstname" class="form-control" />
+                    <span asp-validation-for="Input.dr_firstname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_middlename">Midle Name</label>
+                    <input asp-for="Input.dr_middlename" class="form-control" />
+                    <span asp-validation-for="Input.dr_middlename" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_lastname">Last Name</label>
+                    <input asp-for="Input.dr_lastname" class="form-control" />
+                    <span asp-validation-for="Input.dr_lastname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_gender">Gender</label>
+                    <select asp-for="Input.dr_gender" class="custom-select">
+                        <option value="Male">Male</option>
+                        <option value="Femae">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.dr_phone">phone</label>
+                    <input asp-for="Input.dr_phone" class="form-control" />
+                    <span asp-validation-for="Input.dr_phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_speciality">Speciality</label>
+                    <input asp-for="Input.dr_speciality" class="form-control" />
+                    <span asp-validation-for="Input.dr_speciality" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_time">Available Time</label>
+                    <input asp-for="Input.dr_time" class="form-control" />
+                    <span asp-validation-for="Input.dr_time" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_address">Address</label>
+                    <input asp-for="Input.dr_address" class="form-control" />
+                    <span asp-validation-for="Input.dr_address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.dr_about">About</label>
+                    <input asp-for="Input.dr_about" class="form-control" />
+                    <span asp-validation-for="Input.dr_about" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+
+            </div>
+            @*  ASSISTANT*@
+            <div id="assistant" style="display:none;">
+
+                <div class="form-group">
+                    <label asp-for="Input.as_fname">First Name</label>
+                    <input asp-for="Input.as_fname" class="form-control" />
+                    <span asp-validation-for="Input.as_fname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.as_mname">Midle Name</label>
+                    <input asp-for="Input.as_mname" class="form-control" />
+                    <span asp-validation-for="Input.as_mname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.as_lname">Last Name</label>
+                    <input asp-for="Input.as_lname" class="form-control" />
+                    <span asp-validation-for="Input.as_lname" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.as_gender">Gender</label>
+                    <select asp-for="Input.as_gender" class="custom-select" >
+                        <option value="Male">Male</option>
+                        <option value="Femae">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.as_phone">Phone</label>
+                    <input asp-for="Input.as_phone" class="form-control" />
+                    <span asp-validation-for="Input.as_phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.doc_ref" class="control-label"></label>
+                    <select asp-for="Input.doc_ref" class="form-control" asp-items="ViewBag.doc_ref"></select>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+
+            </div>
+            @*INSURANCE COMPANY*@
+            <div id="insurancecompany" style="display:none;">
+
+                <div class="form-group">
+                    <label asp-for="Input.ins_name">Name</label>
+                    <input asp-for="Input.ins_name" class="form-control" />
+                    <span asp-validation-for="Input.ins_name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ins_phone">Phone</label>
+                    <input asp-for="Input.ins_phone" class="form-control" />
+                    <span asp-validation-for="Input.ins_phone" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ins_address">Address</label>
+                    <input asp-for="Input.ins_address" class="form-control" />
+                    <span asp-validation-for="Input.ins_address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ins_fax">Fax</label>
+                    <input asp-for="Input.ins_fax" class="form-control" />
+                    <span asp-validation-for="Input.ins_fax" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+
+            </div>
+        }
+
+
+        else
+        {
+            <div class="form-group">
+                <label asp-for="Input.pat_firstname">First Name</label>
+                <input asp-for="Input.pat_firstname" class="form-control" />
+                <span asp-validation-for="Input.pat_firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_middlename">Midle Name</label>
+                <input asp-for="Input.pat_middlename" class="form-control" />
+                <span asp-validation-for="Input.pat_middlename" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_lastname">Last Name</label>
+                <input asp-for="Input.pat_lastname" class="form-control" />
+                <span asp-validation-for="Input.pat_lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_gender">Gender</label>
+                <select asp-for="Input.pat_gender" class="custom-select">
+                    <option value="Male">Male</option>
+                    <option value="Femae">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_phone">Phone</label>
+                <input asp-for="Input.pat_phone" class="form-control" />
+                <span asp-validation-for="Input.pat_phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_blood">blood type</label>
+                <select asp-for="Input.pat_blood" class="custom-select">
+                    <option value="o+">o+</option>
+                    <option value="o-">o-</option>
+                    <option value="a+">a+</option>
+                    <option value="a-">a-</option>
+                    <option value="b+">b+</option>
+                    <option value="b-">b-</option>
+                    <option value="ab+">ab+</option>
+                    <option value="ab-">ab-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_address">address</label>
+                <input asp-for="Input.pat_address" class="form-control" />
+                <span asp-validation-for="Input.pat_address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_birthday">birthday</label>
+                <input type="date" asp-for="Input.pat_birthday" class="form-control" />
+                <span asp-validation-for="Input.pat_birthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.pat_ins_ref" class="control-label"></label>
+                <select asp-for="Input.pat_ins_ref" class="form-control" asp-items="ViewBag.pat_ins_ref"></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+
+        }
+
+    </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+@*#####################SCRIPT################################*@
+<script type="text/javascript">
+    function admSelectCheck(nameSelect) {
+        console.log(nameSelect);
+        if (nameSelect) {
+            admOptionValue = document.getElementById("doctorrole").value;
+            if (admOptionValue == nameSelect.value) {
+                document.getElementById("doctor").style.display = "block";
+            }
+            else {
+                document.getElementById("doctor").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("doctor").style.display = "none";
+        }
+        //#############################################
+        if (nameSelect) {
+            admOptionValue = document.getElementById("assistantrole").value;
+            if (admOptionValue == nameSelect.value) {
+                document.getElementById("assistant").style.display = "block";
+            }
+            else {
+                document.getElementById("assistant").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("assistant").style.display = "none";
+        }
+
+
+        //###################################################
+        if (nameSelect) {
+            admOptionValue = document.getElementById("insurancecompanyrole").value;
+            if (admOptionValue == nameSelect.value) {
+                document.getElementById("insurancecompany").style.display = "block";
+            }
+            else {
+                document.getElementById("insurancecompany").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("insurancecompany").style.display = "none";
+        }
+
+        if (nameSelect) {
+            admOptionValue = document.getElementById("adminrole").value;
+            if (admOptionValue == nameSelect.value) {
+                document.getElementById("admin").style.display = "block";
+            }
+            else {
+                document.getElementById("admin").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("admin").style.display = "none";
+        }
+    }
+</script>

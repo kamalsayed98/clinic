@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Clinic8.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_firstname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_middlename)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_lastname)
+                    </th>
+                    <th>
+                       Gender @*@Html.DisplayNameFor(model => model.dr_geneder)*@
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_username)
+                    </th>
+         
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_speciality)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_time)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dr_about)
+                    </th>
+                   
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_firstname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_middlename)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_lastname)
+                        </td>
+                    
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_geneder)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_username)
+                        </td>
+                     
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_speciality)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_time)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dr_about)
+                        </td>
+                      
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    
+
+
+

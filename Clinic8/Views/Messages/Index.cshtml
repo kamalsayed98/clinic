@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Clinic8.Models.Messages>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.m_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.m_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.m_subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.m_message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.m_date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.m_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m_subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m_message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.m_date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.m_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.m_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.m_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
